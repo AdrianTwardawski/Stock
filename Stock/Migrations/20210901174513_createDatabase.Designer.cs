@@ -9,8 +9,8 @@ using Stock.Data;
 namespace Stock.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210831171250_addCategoryToDatabase")]
-    partial class addCategoryToDatabase
+    [Migration("20210901174513_createDatabase")]
+    partial class createDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,8 +33,8 @@ namespace Stock.Migrations
                     b.Property<string>("Walor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Zmiana")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Zmiana")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 

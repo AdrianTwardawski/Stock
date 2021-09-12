@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Stock.Models
 {
-    public class Category
+    public class Observed
     {
         [Key]
         public int Id { get; set; }
         public string Walor { get; set; }
-        public string Kurs { get; set; }
         public float Zmiana { get; set; }
-
-
     }
 }

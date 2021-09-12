@@ -2,7 +2,7 @@
 
 namespace Stock.Migrations
 {
-    public partial class addCategoryToDatabase : Migration
+    public partial class createDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace Stock.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Walor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Kurs = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Zmiana = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Zmiana = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {

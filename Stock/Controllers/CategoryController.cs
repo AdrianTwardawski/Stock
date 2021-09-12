@@ -17,24 +17,24 @@ namespace Stock.Controllers
             _db = db;
         }
 
+        
         public IActionResult Index()
         {
             var stockScraper = new StockScraper();
             var stocks = stockScraper.GetStocks();
             foreach (var stock in stocks)
-            {
+            {            
                 _db.Category.Add(stock);
                 _db.SaveChanges();
             }
-            //IEnumerable<Category> objList = _db.Category;
+            
             return View(stocks);
         }
 
         //GET - CREATE
         public IActionResult Create()
         {
-            IEnumerable<Category> objList = _db.Category;
-            return View(objList);
+            return View();
         }
     }
 }
