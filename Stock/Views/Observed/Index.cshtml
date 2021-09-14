@@ -5,7 +5,9 @@
         <div class="col-6">
             <h2 class="text-primary">Moja lista spółek</h2>
         </div>
-        <div class="col-6">Dodaj spółkę</div>
+        <div class="col-6">
+        <a asp-controller="Observed" asp-action="Create" class="btn btn-primary"> Dodaj spółkę</a>
+        </div>
     </div>
     <br />
 
@@ -23,6 +25,9 @@
                     <th>
                         Zmiana
                     </th>
+                    <th>
+                        Liczba Akcji
+                    </th>
                 </tr>
             </thead>
 
@@ -30,9 +35,10 @@
                 @foreach(var item in Model)
                 {
                     <tr>
-                        <td width="30%">@item.Id</td>
-                        <td width="30%">@item.Walor</td>
-                        <td width="30%">@item.Zmiana</td>
+                        <td width="25%">@item.Id</td>
+                        <td width="25%">@item.Walor</td>
+                        <td width="25%">@item.CenaZakupu</td>
+                        <td width="25%">@item.LiczbaAkcji</td>
                     </tr>
                 }
             </tbody>

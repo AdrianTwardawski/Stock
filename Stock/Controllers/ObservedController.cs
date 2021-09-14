@@ -22,5 +22,12 @@ namespace Stock.Controllers
             IEnumerable<Observed> objList = _db.Observed;
             return View(objList);
         }
+
+        //Get - Create
+        [HttpGet]
+        public IActionResult Create()
+        {           
+            return View();
+        }
     }
 }

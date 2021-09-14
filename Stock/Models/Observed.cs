@@ -11,6 +11,8 @@ namespace Stock.Models
         [Key]
         public int Id { get; set; }
         public string Walor { get; set; }
-        public float Zmiana { get; set; }
+        public float CenaZakupu { get; set; }
+        public int LiczbaAkcji { get; set; }
+        
     }
 }

@@ -434,3 +434,4 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\HtmlAgilityPack.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\HtmlAgilityPack.CssSelectors.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Index.cshtml.g.cs
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Create.cshtml.g.cs
