@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Stock.Data;
 using Stock.Models;
 using System;
@@ -26,8 +27,28 @@ namespace Stock.Controllers
         //Get - Create
         [HttpGet]
         public IActionResult Create()
-        {           
+        {
+            IEnumerable<SelectListItem> TypeDropDown = _db.Category.Select(i => new SelectListItem
+            {
+                Text = i.Walor,
+                Value = i.Id.ToString()
+            });
+
+            ViewBag.TypeDropDown = TypeDropDown;
+
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreatePost(Observed observed)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Add(observed);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(observed);
         }
     }
 }

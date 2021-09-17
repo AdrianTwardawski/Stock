@@ -9,8 +9,8 @@ using Stock.Data;
 namespace Stock.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210901174513_createDatabase")]
-    partial class createDatabase
+    [Migration("20210914160810_CreateDatabase")]
+    partial class CreateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,27 @@ namespace Stock.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("Stock.Models.Observed", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("CenaZakupu")
+                        .HasColumnType("real");
+
+                    b.Property<int>("LiczbaAkcji")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Walor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Observed");
                 });
 #pragma warning restore 612, 618
         }

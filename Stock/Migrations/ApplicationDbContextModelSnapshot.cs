@@ -46,6 +46,9 @@ namespace Stock.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<float>("CenaZakupu")
                         .HasColumnType("real");
 
@@ -57,7 +60,20 @@ namespace Stock.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Observed");
+                });
+
+            modelBuilder.Entity("Stock.Models.Observed", b =>
+                {
+                    b.HasOne("Stock.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }
