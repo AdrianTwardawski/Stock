@@ -21,6 +21,10 @@ namespace Stock.Controllers
         public IActionResult Index()
         {
             IEnumerable<Observed> objList = _db.Observed;
+            foreach (var obj in objList)
+            {
+                obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
+            }
             return View(objList);
         }
 
@@ -33,9 +37,7 @@ namespace Stock.Controllers
                 Text = i.Walor,
                 Value = i.Id.ToString()
             });
-
             ViewBag.TypeDropDown = TypeDropDown;
-
             return View();
         }
 
