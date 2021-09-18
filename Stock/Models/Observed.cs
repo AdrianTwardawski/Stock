@@ -15,6 +15,7 @@ namespace Stock.Models
         public string Walor { get; set; }
         public float CenaZakupu { get; set; }
         public int LiczbaAkcji { get; set; }
+        public float Zysk { get; set; }
 
         [DisplayName("Category")]
         public int CategoryId { get; set; }
