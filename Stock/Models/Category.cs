@@ -12,6 +12,7 @@ namespace Stock.Models
         public int Id { get; set; }
         public string Walor { get; set; }
         public string Kurs { get; set; }
+        public float KursFloat { get; set; }
         public float Zmiana { get; set; }
 
 

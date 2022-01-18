@@ -8,11 +8,16 @@ using System.Text;
 
 namespace Stock
 {
-    class StockScraper
+    public interface IStockScraper
     {
-       
+        IEnumerable<Category> GetStocks();
+    }
+
+    public class StockScraper : IStockScraper
+    {
+
         private const string BaseUrl = "https://www.bankier.pl/gielda/notowania/akcje";
-      
+
         public IEnumerable<Category> GetStocks()
         {
             var web = new HtmlWeb();
@@ -28,20 +33,21 @@ namespace Stock
                 var walor = tds[0].QuerySelector("a").InnerText;
                 var kurs = tds[1].InnerText;
                 var zmiana = tds[2].InnerText;
-
-                //float kursFloat = float.Parse(kurs.Replace(",", ".").Replace("&nbsp;", ""));
+                float kursFloat = float.Parse(kurs.Replace(",", ".").Replace("&nbsp;", ""));
                 float zmianaFloat = float.Parse(zmiana.Replace(",", "."));
                 Category stock = new Category
                 {
                     Walor = walor,
                     Kurs = kurs,
+                    KursFloat = kursFloat,
                     Zmiana = zmianaFloat
                 };
-          
+
                 stocks.Add(stock);
-               
+                
+
             }
-            return stocks;
-        }
+            return stocks;         
+        }       
     }
 }

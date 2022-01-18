@@ -6,8 +6,8 @@
             <h2 class="text-primary">Lista spółek</h2>
         </div>
         <div class="col-6">
-            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-            Przycisk
+            <a asp-controller="Category" asp-action="Update" class="btn btn-primary">
+            Odśwież
             </a>
         </div>
     </div>
@@ -28,6 +28,9 @@
                     <th>
                         Zmiana
                     </th>
+                    <th>
+                        KursFloat
+                    </th>
 
                 </tr>
             </thead>
@@ -36,8 +39,9 @@
                 {
                     <tr>
                         <td width="40%">@obj.Walor</td>
-                        <td width="30%">@obj.Kurs</td>
-                        <td width="30%">@obj.Zmiana</td>                      
+                        <td width="20%">@obj.Kurs</td>
+                        <td width="20%">@obj.Zmiana</td>                      
+                        <td width="20%">@obj.KursFloat</td>                      
                     </tr>
                 }
             </tbody>

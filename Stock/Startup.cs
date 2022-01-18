@@ -28,12 +28,13 @@ namespace Stock
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped<ISeeder, Seeder>();
+            services.AddScoped<IStockScraper, StockScraper>();
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeeder seeder)
         {
             if (env.IsDevelopment())
             {
@@ -51,7 +52,7 @@ namespace Stock
             app.UseRouting();
 
             app.UseAuthorization();
-
+            seeder.Seed();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

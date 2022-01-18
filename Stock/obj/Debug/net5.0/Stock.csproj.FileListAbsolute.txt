@@ -323,7 +323,6 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\ru\Microsoft.CodeAna
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.csprojAssemblyReference.cache
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.AssemblyInfoInputs.cache
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.AssemblyInfo.cs
@@ -333,7 +332,6 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.MvcApplication
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.RazorAssemblyInfo.cache
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.RazorAssemblyInfo.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\staticwebassets\Stock.StaticWebAssets.Manifest.cache
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\staticwebassets\Stock.StaticWebAssets.xml
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\scopedcss\bundle\Stock.styles.css
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.TagHelpers.input.cache
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.TagHelpers.output.cache
@@ -431,9 +429,9 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\runtimes\win-arm\lib
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\HtmlAgilityPack.dll
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\HtmlAgilityPack.CssSelectors.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Index.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Create.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Delete.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Update.cshtml.g.cs
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.csproj.AssemblyReference.cache
