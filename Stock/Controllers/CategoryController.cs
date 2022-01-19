@@ -23,28 +23,33 @@ namespace Stock.Controllers
         
         public IActionResult Index()
         {
-            var stocks = _stockScraper.GetStocks();           
-            foreach (var stock in stocks)
+            var stocks = _stockScraper.GetStocks();
+            foreach (var itemScraped in stocks)
             {               
-                _db.Category.Update(stock);
-                _db.SaveChanges();
+                var itemInDb = _db.Category.FirstOrDefault(i => i.Walor == itemScraped.Walor);
+                itemInDb.Kurs = itemScraped.Kurs;
+                itemInDb.Zmiana = itemScraped.Zmiana;
+                itemInDb.KursFloat = itemScraped.KursFloat;
+                _db.Category.Update(itemInDb);
+               
             }
+            _db.SaveChanges();
 
             return View(stocks);
         }
 
-        //POST - Update
-       [HttpGet]      
-        public IActionResult Update(Category category)
-        {                          
-            var stocks = _stockScraper.GetStocks();
-            foreach (var stock in stocks)
-            {
-               _db.Category.Update(stock);
-               _db.SaveChanges();
+       // //POST - Update
+       //[HttpGet]      
+       // public IActionResult Update(Category category)
+       // {                          
+       //     var stocks = _stockScraper.GetStocks();
+       //     foreach (var stock in stocks)
+       //     {
+       //        _db.Category.Update(stock);
+       //        _db.SaveChanges();
                 
-            }
-            return RedirectToAction("Index");
-        }
+       //     }
+       //     return RedirectToAction("Index");
+       // }
     }
 }

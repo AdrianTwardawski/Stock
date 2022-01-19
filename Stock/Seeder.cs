@@ -26,8 +26,10 @@ namespace Stock
             if (_dbContext.Category.Any()) return;
             {
                 var stocks = _stockScraper.GetStocks();
+                
                 foreach (var stock in stocks)
-                {
+                {    
+                    
                     _dbContext.Category.Add(stock);
                     _dbContext.SaveChanges();
                 }
