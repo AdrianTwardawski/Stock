@@ -31,8 +31,8 @@ namespace Stock
                 {    
                     
                     _dbContext.Category.Add(stock);
-                    _dbContext.SaveChanges();
                 }
+                _dbContext.SaveChanges();
             }
         }
     }
