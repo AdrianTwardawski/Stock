@@ -32,7 +32,7 @@ namespace Stock
                 var tds = tableRow.QuerySelectorAll("td");
 
                 var walor = tds[0].QuerySelector("a").InnerText;
-                var kurs = tds[1].InnerText+1000;
+                var kurs = tds[1].InnerText;
                 var zmiana = tds[2].InnerText;
                 float kursFloat = float.Parse(kurs.Replace(",", ".").Replace("&nbsp;", ""));
                 float zmianaFloat = float.Parse(zmiana.Replace(",", "."));
