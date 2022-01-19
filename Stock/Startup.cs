@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stock.Data;
+using Stock.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace Stock
                 Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ISeeder, Seeder>();
             services.AddScoped<IStockScraper, StockScraper>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddControllersWithViews();
         }
 
