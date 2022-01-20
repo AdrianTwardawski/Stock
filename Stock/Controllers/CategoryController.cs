@@ -22,13 +22,13 @@ namespace Stock.Controllers
             _categoryService = categoryService;
         }
 
-        
-        
+
+
         public IActionResult Index()
         {
-           var stocks = _categoryService.GetAllStocks();        
-                return View(stocks);                    
+            var stocks = _categoryService.GetAllStocks();
+            return View(stocks);
         }
-    
+
     }
 }

@@ -30,7 +30,7 @@ namespace Stock.Services
                 itemInDb.Kurs = itemScraped.Kurs;
                 itemInDb.Zmiana = itemScraped.Zmiana;
                 itemInDb.KursFloat = itemScraped.KursFloat;
-                _db.Category.Update(itemInDb);          
+                _db.Category.Update(itemInDb);
             }
             _db.SaveChanges();
             return (List<Category>)stocks;
