@@ -32,6 +32,7 @@ namespace Stock
             services.AddScoped<ISeeder, Seeder>();
             services.AddScoped<IStockScraper, StockScraper>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IObservedService, ObservedService>();
             services.AddControllersWithViews();
         }
 

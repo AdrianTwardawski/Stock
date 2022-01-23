@@ -6,17 +6,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Stock.Models
+namespace Stock.Models.ViewModels
 {
-    public class Observed
+    public class ObservedVM
     {
-        public int Id { get; set; }
+        [Required]
         public string Walor { get; set; }
+        [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         public float CenaZakupu { get; set; }
+        [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         public int LiczbaAkcji { get; set; }
-        public float Zysk { get; set; }
+        [DisplayName("Category")]
         public int CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
-    }
+    }  
 }

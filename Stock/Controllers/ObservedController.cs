@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Stock.Data;
 using Stock.Models;
+using Stock.Models.ViewModels;
+using Stock.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,27 +14,18 @@ namespace Stock.Controllers
     public class ObservedController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly IObservedService _service;
 
-        public ObservedController(ApplicationDbContext db)
+        public ObservedController(ApplicationDbContext db, IObservedService service)
         {
             _db = db;
+            _service = service;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Observed> objList = _db.Observed;
-            foreach (var obj in objList)
-            {
-                obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
-
-
-                var KursConv = float.Parse(obj.Category.Kurs.Replace(",", "."));
-                var KursRound = MathF.Round(KursConv, 2);
-                obj.Zysk = (KursRound - obj.CenaZakupu)*obj.LiczbaAkcji;
-
-
-            }
-            return View(objList);
+            var userStocks = _service.GetUserStocks();
+            return View(userStocks);
         }
 
         //GET - Create

@@ -29,7 +29,6 @@ namespace Stock
 
                 foreach (var stock in stocks)
                 {
-
                     _dbContext.Category.Add(stock);
                 }
                 _dbContext.SaveChanges();
