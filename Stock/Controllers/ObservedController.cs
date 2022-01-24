@@ -43,16 +43,22 @@ namespace Stock.Controllers
 
         //POST - Create
         [HttpPost]
-        public IActionResult CreatePost(Observed observed)
-        {         
-
+        public IActionResult Create(ObservedVM model)
+        {
             if (ModelState.IsValid)
             {
-                _db.Add(observed);
+                var observed = new Observed
+                {
+                    CategoryId = model.CategoryId,
+                    LiczbaAkcji = model.LiczbaAkcji,
+                    CenaZakupu = model.CenaZakupu
+                };
+               
+                _db.Observed.Add(observed);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(observed);
+            return View();
         }
 
         //GET - Delete

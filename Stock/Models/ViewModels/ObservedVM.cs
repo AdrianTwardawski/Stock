@@ -10,11 +10,13 @@ namespace Stock.Models.ViewModels
 {
     public class ObservedVM
     {
-        [Required]
+        
         public string Walor { get; set; }
+        [DisplayName("Cena zakupu")]
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         public float CenaZakupu { get; set; }
+        [DisplayName("Liczba akcji")]
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         public int LiczbaAkcji { get; set; }
@@ -23,5 +25,5 @@ namespace Stock.Models.ViewModels
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
-    }  
+    }
 }
