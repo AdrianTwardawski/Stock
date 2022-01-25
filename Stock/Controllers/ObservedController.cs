@@ -47,11 +47,14 @@ namespace Stock.Controllers
         {
             if (ModelState.IsValid)
             {
+                Category dbStock = _db.Category.FirstOrDefault(s => s.Id == model.CategoryId);
                 var observed = new Observed
                 {
                     CategoryId = model.CategoryId,
                     LiczbaAkcji = model.LiczbaAkcji,
-                    CenaZakupu = model.CenaZakupu
+                    CenaZakupu = model.CenaZakupu,
+                    Walor = dbStock.Walor,
+                    Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.KursFloat)
                 };
                
                 _db.Observed.Add(observed);
