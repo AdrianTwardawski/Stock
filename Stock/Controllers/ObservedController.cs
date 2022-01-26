@@ -123,15 +123,19 @@ namespace Stock.Controllers
         //POST - Update
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Observed observed)
+        public IActionResult Update(ObservedVM model)
         {
             if (ModelState.IsValid)
             {
-                _db.Observed.Update(observed);
+                Observed dbStock = _db.Observed.FirstOrDefault(s => s.CategoryId == model.CategoryId);
+                model.Walor = dbStock.Walor;
+                dbStock.LiczbaAkcji = model.LiczbaAkcji;
+                dbStock.CenaZakupu = model.CenaZakupu;
+                _db.Observed.Update(dbStock);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(observed);
+            return View();
         }
     }
 }
