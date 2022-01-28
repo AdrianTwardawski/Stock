@@ -24,10 +24,22 @@ namespace Stock.Controllers
 
 
 
-        public IActionResult Index()
+        public IActionResult Index(int pg = 1)
         {
             var stocks = _categoryService.GetAllStocks();
-            return View(stocks);
+
+            const int pageSize = 10;
+            if (pg < 1)
+                pg = 1;
+
+            int recsCount = stocks.Count();
+            var pager = new Pager(recsCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+            var data = stocks.Skip(recSkip).Take(pager.PageSize).ToList();
+            this.ViewBag.Pager = pager;
+
+            //return View(stocks);
+            return View(data);
         }
 
     }
