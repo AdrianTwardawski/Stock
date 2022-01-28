@@ -19,7 +19,7 @@ namespace Stock.Models
 
         }
 
-        public Pager(int totalItems, int page, int pageSize = 10)
+        public Pager(int totalItems, int page, int pageSize = 30)
         {
             int totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
             int currentPage = page;

@@ -28,7 +28,7 @@ namespace Stock.Controllers
         {
             var stocks = _categoryService.GetAllStocks();
 
-            const int pageSize = 10;
+            const int pageSize = 30;
             if (pg < 1)
                 pg = 1;
 
