@@ -24,9 +24,21 @@ namespace Stock.Controllers
 
 
 
-        public IActionResult Index(int pg = 1)
+        public IActionResult Index(int pg = 1, string SearchText = "")
         {
-            var stocks = _categoryService.GetAllStocks();
+            var stocks = _categoryService.GetAllStocks();           
+            if (SearchText != "" && SearchText != null)
+            {
+                stocks = _categoryService.GetAllStocks()
+                    .Where(p => p.Walor.Contains(SearchText))
+                    .ToList();
+            }
+            else
+                stocks.ToList();
+                
+
+
+
 
             const int pageSize = 30;
             if (pg < 1)
