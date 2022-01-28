@@ -47,18 +47,7 @@ namespace Stock.Controllers
         {
             if (ModelState.IsValid)
             {
-                Category dbStock = _db.Category.FirstOrDefault(s => s.Id == model.CategoryId);
-                var observed = new Observed
-                {
-                    CategoryId = model.CategoryId,
-                    LiczbaAkcji = model.LiczbaAkcji,
-                    CenaZakupu = model.CenaZakupu,
-                    Walor = dbStock.Walor,
-                    Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.KursFloat)
-                };
-               
-                _db.Observed.Add(observed);
-                _db.SaveChanges();
+               _service.Create(model);
                 return RedirectToAction("Index");
             }
             return View();
@@ -127,12 +116,7 @@ namespace Stock.Controllers
         {
             if (ModelState.IsValid)
             {
-                Observed dbStock = _db.Observed.FirstOrDefault(s => s.CategoryId == model.CategoryId);
-                model.Walor = dbStock.Walor;
-                dbStock.LiczbaAkcji = model.LiczbaAkcji;
-                dbStock.CenaZakupu = model.CenaZakupu;
-                _db.Observed.Update(dbStock);
-                _db.SaveChanges();
+                _service.Update(model);
                 return RedirectToAction("Index");
             }
             return View();
