@@ -34,7 +34,7 @@ namespace Stock
                 var kurs = tds[1].InnerText;
                 var zmiana = tds[2].InnerText;
                 float kursFloat = float.Parse(kurs.Replace(",", ".").Replace("&nbsp;", ""));
-                float zmianaFloat = float.Parse(zmiana.Replace(",", ".").Replace("&nbsp;", ""));
+                float zmianaFloat = MathF.Round((kursFloat*100)/(kursFloat-(float.Parse(zmiana.Replace(",", ".").Replace("&nbsp;", ""))))-100,2);              
                 Category stock = new Category
                 {
                     Walor = walor,

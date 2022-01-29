@@ -23,14 +23,56 @@ namespace Stock.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index(int pg = 1, string SearchText = "")
+        public IActionResult Index(int pg = 1, string SearchText = "", string sortExpression="")
         {
-            var stocks = _categoryService.GetAllStocks();
+            ViewData["SortParamWalor"] = "walor";
+            ViewData["SortParamZmiana"] = "zmiana";
+
+            ViewData["SortIconWalor"] = "";
+            ViewData["SortIconZmiana"] = "";
+
+            SortOrder sortOrder;
+            string sortProperty;
+
+            switch (sortExpression.ToLower())
+            {
+                case "walor_desc":
+                    sortOrder = SortOrder.Descending;
+                    sortProperty = "walor";
+                    ViewData["SortParamWalor"] = "walor";
+                    ViewData["SortIconWalor"] = "fa fa-arrow-up";
+                    break;
+
+                case "zmiana":
+                    sortOrder = SortOrder.Ascending;
+                    sortProperty = "zmiana";
+                    ViewData["SortParamZmiana"] = "zmiana_desc";
+                    ViewData["SortIconZmiana"] = "fa fa-arrow-down";
+                    break;
+
+                case "zmiana_desc":
+                    sortOrder = SortOrder.Descending;
+                    sortProperty = "zmiana";
+                    ViewData["SortParamZmiana"] = "zmiana";
+                    ViewData["SortIconZmiana"] = "fa fa-arrow-up";
+                    break;
+
+                default:                   
+                    sortOrder = SortOrder.Ascending;
+                    sortProperty = "walor";
+                    ViewData["SortIconWalor"] = "fa fa-arrow-down";
+                    ViewData["SortParamWalor"] = "walor_desc";
+                    break;
+
+            }
+
+
+            var stocks = _categoryService.GetAllStocks(sortProperty, sortOrder);
 
             if (SearchText != "" && SearchText != null)
             {
                 string SearchTextUpper = SearchText.ToUpper();
-                stocks = _categoryService.GetAllStocks()
+                stocks = _categoryService.GetAllStocks(sortProperty, sortOrder)
                .Where(p => p.Walor.Contains(SearchTextUpper))
                .ToList();
             }

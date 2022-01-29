@@ -9,7 +9,7 @@ namespace Stock.Services
 {
     public interface ICategoryService
     {
-        List<Category> GetAllStocks();
+        List<Category> GetAllStocks(string SortProperty, SortOrder sortOrder);
     }
 
     public class CategoryService : ICategoryService
@@ -21,7 +21,7 @@ namespace Stock.Services
             _db = db;
             _stockScraper = stockScraper;
         }
-        public List<Category> GetAllStocks()
+        public List<Category> GetAllStocks(string SortProperty, SortOrder sortOrder)
         {
             var stocks = _stockScraper.GetStocks();
             foreach (var itemScraped in stocks)
@@ -31,8 +31,23 @@ namespace Stock.Services
                 itemInDb.Zmiana = itemScraped.Zmiana;
                 itemInDb.KursFloat = itemScraped.KursFloat;
                 _db.Category.Update(itemInDb);
-            }
+            }           
             _db.SaveChanges();
+
+            if(SortProperty.ToLower() == "walor")
+            {
+                if (sortOrder == SortOrder.Ascending)
+                    stocks = stocks.OrderBy(n => n.Walor).ToList();
+                else
+                    stocks = stocks.OrderByDescending(n => n.Walor).ToList();
+            }
+            else
+            {
+                if (sortOrder == SortOrder.Ascending)
+                    stocks = stocks.OrderBy(d => d.Zmiana).ToList();
+                else
+                    stocks = stocks.OrderByDescending(d => d.Zmiana).ToList();
+            }
             return (List<Category>)stocks;
         }
     }
