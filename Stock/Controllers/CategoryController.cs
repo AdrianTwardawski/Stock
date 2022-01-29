@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//using Stock.Views.Shared.Components.SearchBar;
 
 namespace Stock.Controllers
 {
@@ -22,37 +23,30 @@ namespace Stock.Controllers
             _categoryService = categoryService;
         }
 
-
-
         public IActionResult Index(int pg = 1, string SearchText = "")
         {
-            var stocks = _categoryService.GetAllStocks();           
+            var stocks = _categoryService.GetAllStocks();
+
             if (SearchText != "" && SearchText != null)
             {
+                string SearchTextUpper = SearchText.ToUpper();
                 stocks = _categoryService.GetAllStocks()
-                    .Where(p => p.Walor.Contains(SearchText))
-                    .ToList();
+               .Where(p => p.Walor.Contains(SearchTextUpper))
+               .ToList();
             }
-            else
-                stocks.ToList();
-                
 
-
-
-
-            const int pageSize = 30;
+            const int pageSize = 10;
             if (pg < 1)
                 pg = 1;
 
             int recsCount = stocks.Count();
-            var pager = new Pager(recsCount, pg, pageSize);
+            var pager = new Pager(recsCount, pg, pageSize); //SPager SearchPager = new SPager(recsCount, pg, pageSize) { Action = "Index", Controller = "Category", SearchText = SearchText };
             int recSkip = (pg - 1) * pageSize;
-            var data = stocks.Skip(recSkip).Take(pager.PageSize).ToList();
-            this.ViewBag.Pager = pager;
+            var data = stocks.Skip(recSkip).Take(pager.PageSize).ToList(); //List<Category> retProducts = stocks.Skip(recSkip).Take(pageSize).ToList()
+            this.ViewBag.Pager = pager; //ViewBag.SearchPager = SearchPager;
 
             //return View(stocks);
-            return View(data);
+            return View(data); //return View(retProducts);
         }
-
     }
 }

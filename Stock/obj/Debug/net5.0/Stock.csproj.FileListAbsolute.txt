@@ -435,4 +435,6 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Delete.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Observed\Update.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.csproj.AssemblyReference.cache
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Shared\Components\SearchBar\Default.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Shared\_Pager.cshtml.g.cs
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Shared\_Search.cshtml.g.cs

@@ -27,7 +27,7 @@ using Stock.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2da05b2f63de2122a7465c275fe6575e3abd874a", @"/Views/Observed/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ddf7b42b56790068c73225ee693baf6f545fbdcc", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"016a12169545209ded6a7d57cd3567bd2f4a230e", @"/Views/_ViewImports.cshtml")]
     public class Views_Observed_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Stock.Models.Observed>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("form-control"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

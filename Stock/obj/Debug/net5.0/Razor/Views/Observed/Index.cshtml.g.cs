@@ -27,7 +27,7 @@ using Stock.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c3a6ecb10e9adc75e49c397c1a48cafca7abea3c", @"/Views/Observed/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ddf7b42b56790068c73225ee693baf6f545fbdcc", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"016a12169545209ded6a7d57cd3567bd2f4a230e", @"/Views/_ViewImports.cshtml")]
     public class Views_Observed_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Stock.Models.Observed>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Observed", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

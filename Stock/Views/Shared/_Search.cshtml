@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Stock.Models.Category>
+
+<div class="col-4 p-0 justify-content-end">
+    <form asp-controller="Category" asp-action="Index">
+        <span class="btn-group">
+            <input class="form-control" type="text" name="SearchText" placeholder="Search Key" />
+            <input class="p-1 ml-2 btn btn-primary" type="submit" value="Search" />
+        </span>
+    </form>
+</div>

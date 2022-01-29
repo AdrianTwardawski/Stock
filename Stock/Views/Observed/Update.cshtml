@@ -23,7 +23,7 @@
 
                 <div class="form-group row">
                     <div class="col-4">
-                        <select asp-for="CategoryId" asp-items="@ViewBag.TypeDropDown" class="form-control">
+                        <select  asp-for="CategoryId" asp-items="@ViewBag.TypeDropDown" class="form-control">
                             <option selected>--Select Expense Type</option>
                         </select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>

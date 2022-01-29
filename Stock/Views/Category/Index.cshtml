@@ -1,79 +1,67 @@
 ﻿@model IEnumerable<Stock.Models.Category>
 
-@{ 
+@{
     ViewData["Title"] = "Index";
     Pager pager = new Pager();
     int pageNo = 0;
-    if(ViewBag.Pager != null)
+    if (ViewBag.Pager != null)
     {
         pager = ViewBag.Pager;
         pageNo = pager.CurrentPage;
     }
 }
 
-
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-primary">Lista spółek</h2>
-        </div>      
+        </div>
     </div>
 
     <br /><br />
 
-    <div class="form-group row">             
-            <div class="col-4">
-                <form asp-controller="Category" asp-action="Index">
-                    <span class="btn-group">
-                        <input class="form-control" type="text" name="SearchText"
-                                placeholder="SearchKey">
-                        <input class="p-1 ml-2 btn btn-primary" type="submit" value="Search" />
-                    </span>
-                </form>
-            </div>
+    @*View Component!*@
+    @*<vc:search-bar search-pager="@ViewBag.SearchPager">
+        </vc:search-bar>*@
 
-            <div class="col-8">
-                <partial name="_pager" model="@pager" />
-            </div>
-    </div>
+    <partial name="_search"/>
+    <partial name="_pager" model="@pager" />
 
     @if (Model.Count() > 0)
     {
-        <table class="table table-bordered table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>
-                        Spółka
-                    </th>
-                    <th>
-                        Kurs
-                    </th>
-                    <th>
-                        Zmiana
-                    </th>
-                    <th>
-                        KursFloat
-                    </th>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Spółka
+            </th>
+            <th>
+                Kurs
+            </th>
+            <th>
+                Zmiana
+            </th>
+            <th>
+                KursFloat
+            </th>
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var obj in Model)
-                    {
-                        <tr>
-                            <td width="40%">@obj.Walor</td>
-                            <td width="20%">@obj.Kurs</td>
-                            <td width="20%">@obj.Zmiana</td>
-                            <td width="20%">@obj.KursFloat</td>
-                        </tr>                
-                    }
-            </tbody>
-        </table>
-    }
-    else
-    {
-    <p>No category exists</p>
-    }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+<tr>
+    <td width="40%">@obj.Walor</td>
+    <td width="20%">@obj.Kurs</td>
+    <td width="20%">@obj.Zmiana</td>
+    <td width="20%">@obj.KursFloat</td>
+</tr>
+}
+    </tbody>
+</table> }
+else
+{
+<p>No category exists</p>}
 </div>
 
 
