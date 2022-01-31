@@ -1,4 +1,5 @@
-﻿using Stock.Data;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Stock.Data;
 using Stock.Models;
 using Stock.Models.ViewModels;
 using System;
@@ -13,6 +14,8 @@ namespace Stock.Services
         IEnumerable<Observed> GetUserStocks();
         void Create(ObservedVM model);
         void Update(ObservedVM model);
+        IEnumerable<SelectListItem> GetTypeDropDown();
+        Observed GetById(int? id);
     }
 
     public class ObservedService : IObservedService
@@ -52,6 +55,17 @@ namespace Stock.Services
             _dbContext.Observed.Add(observed);
             _dbContext.SaveChanges();
         }
+
+        public IEnumerable<SelectListItem> GetTypeDropDown()
+        {
+            var TypeDropDown = _dbContext.Category.Select(i => new SelectListItem
+            {
+                Text = i.Walor,
+                Value = i.Id.ToString()
+            });
+            return TypeDropDown;
+            
+        }
         
         public void Update(ObservedVM model)
         {
@@ -61,6 +75,12 @@ namespace Stock.Services
             dbStock.CenaZakupu = model.CenaZakupu;
            
             _dbContext.SaveChanges();
+        }
+
+        public Observed GetById(int? id)
+        {
+            var obj = _dbContext.Observed.Find(id);
+            return obj;
         }
     }
 }

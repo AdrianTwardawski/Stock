@@ -1,17 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
 
-namespace Stock.Models
+namespace Stock.Models.ViewModels
 {
-
-    public class Category
+    public class CategoryVM
     {
-        [Key]
         public int Id { get; set; }
         public string Walor { get; set; }
-        public string Kurs { get; set; }
+        [DisplayName("Kurs")]
         public float KursFloat { get; set; }
         public float Zmiana { get; set; }
-
-
     }
 }

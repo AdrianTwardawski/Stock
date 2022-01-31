@@ -24,7 +24,7 @@ namespace Stock
             var document = web.Load(BaseUrl);
             var tableRows = document.QuerySelectorAll("table tr").Skip(1).Skip(11);
 
-            List<Category> stocks = new List<Category>();
+            var stocks = new List<Category>();
 
             foreach (var tableRow in tableRows)
             {
@@ -35,7 +35,7 @@ namespace Stock
                 var zmiana = tds[2].InnerText;
                 float kursFloat = float.Parse(kurs.Replace(",", ".").Replace("&nbsp;", ""));
                 float zmianaFloat = MathF.Round((kursFloat*100)/(kursFloat-(float.Parse(zmiana.Replace(",", ".").Replace("&nbsp;", ""))))-100,2);              
-                Category stock = new Category
+                var stock = new Category
                 {
                     Walor = walor,
                     Kurs = kurs,

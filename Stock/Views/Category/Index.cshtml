@@ -38,19 +38,13 @@
                 <thead>
                     <tr>
                         <th>
-                            <i class="@ViewData["SortIconWalor"]" arial-hidden="true"></i>
-                            <a asp-action="Index" asp-route-sortExpression="@ViewData["SortParamWalor"]">
-                                @Html.DisplayNameFor(model => model.Walor)
-                            </a>
+                            @Html.ActionLink("Walor", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.KursFloat)
                         </th>
                         <th>
-                            <i class="@ViewData["SortIconZmiana"]" arial-hidden="true"></i>
-                            <a asp-action="Index" asp-route-sortExpression="@ViewData["SortParamZmiana"]">
-                                @Html.DisplayNameFor(model => model.Zmiana)
-                            </a>
+                            @Html.ActionLink("Zmiana", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>                   
                     </tr>
                 </thead>

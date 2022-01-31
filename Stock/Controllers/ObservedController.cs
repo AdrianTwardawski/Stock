@@ -32,11 +32,7 @@ namespace Stock.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            IEnumerable<SelectListItem> TypeDropDown = _db.Category.Select(i => new SelectListItem
-            {
-                Text = i.Walor,
-                Value = i.Id.ToString()
-            });
+            var TypeDropDown = _service.GetTypeDropDown();
             ViewBag.TypeDropDown = TypeDropDown;
             return View();
         }
@@ -74,7 +70,7 @@ namespace Stock.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Observed.Find(id);
+            var obj = _service.GetById(id);
             if (obj == null)
             {
                 return NotFound();
@@ -89,11 +85,7 @@ namespace Stock.Controllers
         public IActionResult Update(int? id)
         {
 
-            IEnumerable<SelectListItem> TypeDropDown = _db.Category.Select(i => new SelectListItem
-            {
-                Text = i.Walor,
-                Value = i.Id.ToString()
-            });
+            var TypeDropDown = _service.GetTypeDropDown();
             ViewBag.TypeDropDown = TypeDropDown;
 
 
@@ -101,7 +93,7 @@ namespace Stock.Controllers
             {
                 return NoContent();
             }
-            var obj = _db.Observed.Find(id);
+            var obj = _service.GetById(id);
             if (obj == null)
             {
                 return NotFound();

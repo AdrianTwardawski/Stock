@@ -23,56 +23,34 @@ namespace Stock.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index(int pg = 1, string SearchText = "", string sortExpression="")
-        {
-            ViewData["SortParamWalor"] = "walor";
-            ViewData["SortParamZmiana"] = "zmiana";
+        public IActionResult Index(int pg = 1, string SearchText = "", string sortOrder = "")
+        {    
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            ViewData["SortIconWalor"] = "";
-            ViewData["SortIconZmiana"] = "";
+            var stocks = _categoryService.GetAllStocks();
 
-            SortOrder sortOrder;
-            string sortProperty;
-
-            switch (sortExpression.ToLower())
+            switch (sortOrder)
             {
-                case "walor_desc":
-                    sortOrder = SortOrder.Descending;
-                    sortProperty = "walor";
-                    ViewData["SortParamWalor"] = "walor";
-                    ViewData["SortIconWalor"] = "fa fa-arrow-up";
+                case "name_desc":
+                    stocks = stocks.OrderByDescending(s => s.Walor).ToList();
                     break;
-
-                case "zmiana":
-                    sortOrder = SortOrder.Ascending;
-                    sortProperty = "zmiana";
-                    ViewData["SortParamZmiana"] = "zmiana_desc";
-                    ViewData["SortIconZmiana"] = "fa fa-arrow-down";
+                case "Date":
+                    stocks = stocks.OrderBy(s => s.Zmiana).ToList();
                     break;
-
-                case "zmiana_desc":
-                    sortOrder = SortOrder.Descending;
-                    sortProperty = "zmiana";
-                    ViewData["SortParamZmiana"] = "zmiana";
-                    ViewData["SortIconZmiana"] = "fa fa-arrow-up";
+                case "date_desc":
+                    stocks = stocks.OrderByDescending(s => s.Zmiana).ToList();
                     break;
-
-                default:                   
-                    sortOrder = SortOrder.Ascending;
-                    sortProperty = "walor";
-                    ViewData["SortIconWalor"] = "fa fa-arrow-down";
-                    ViewData["SortParamWalor"] = "walor_desc";
+                default:
+                    stocks = stocks.OrderBy(s => s.Walor).ToList();
                     break;
-
             }
-
-
-            var stocks = _categoryService.GetAllStocks(sortProperty, sortOrder);
-
-            if (SearchText != "" && SearchText != null)
+           
+            /*if (SearchText != "" && SearchText != null)*/
+            if (!String.IsNullOrEmpty(SearchText))
             {
                 string SearchTextUpper = SearchText.ToUpper();
-                stocks = _categoryService.GetAllStocks(sortProperty, sortOrder)
+                stocks = _categoryService.GetAllStocks()
                .Where(p => p.Walor.Contains(SearchTextUpper))
                .ToList();
             }
@@ -87,7 +65,6 @@ namespace Stock.Controllers
             var data = stocks.Skip(recSkip).Take(pager.PageSize).ToList(); //List<Category> retProducts = stocks.Skip(recSkip).Take(pageSize).ToList()
             this.ViewBag.Pager = pager; //ViewBag.SearchPager = SearchPager;
 
-            //return View(stocks);
             return View(data); //return View(retProducts);
         }
     }

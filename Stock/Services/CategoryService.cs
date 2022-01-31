@@ -1,5 +1,6 @@
 ﻿using Stock.Data;
 using Stock.Models;
+using Stock.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace Stock.Services
 {
     public interface ICategoryService
     {
-        List<Category> GetAllStocks(string SortProperty, SortOrder sortOrder);
+        IEnumerable<Category> GetAllStocks();
+        //IEnumerable<CategoryVM> StocksDtos();
     }
 
     public class CategoryService : ICategoryService
@@ -21,34 +23,47 @@ namespace Stock.Services
             _db = db;
             _stockScraper = stockScraper;
         }
-        public List<Category> GetAllStocks(string SortProperty, SortOrder sortOrder)
+        public IEnumerable<Category> GetAllStocks()
         {
             var stocks = _stockScraper.GetStocks();
             foreach (var itemScraped in stocks)
             {
                 var itemInDb = _db.Category.FirstOrDefault(i => i.Walor == itemScraped.Walor);
-                itemInDb.Kurs = itemScraped.Kurs;
-                itemInDb.Zmiana = itemScraped.Zmiana;
-                itemInDb.KursFloat = itemScraped.KursFloat;
-                _db.Category.Update(itemInDb);
+                if (itemInDb == null)
+                {
+                    var stock = new Category
+                    {
+                        Walor = itemScraped.Walor,
+                        Kurs = itemScraped.Kurs,
+                        KursFloat = itemScraped.KursFloat,
+                        Zmiana = itemScraped.Zmiana
+                    };
+                    _db.Category.Add(stock);                 
+                }
+                else
+                {
+                    itemInDb.Kurs = itemScraped.Kurs;
+                    itemInDb.Zmiana = itemScraped.Zmiana;
+                    itemInDb.KursFloat = itemScraped.KursFloat;
+                    _db.Category.Update(itemInDb);
+                }
             }           
             _db.SaveChanges();
 
-            if(SortProperty.ToLower() == "walor")
-            {
-                if (sortOrder == SortOrder.Ascending)
-                    stocks = stocks.OrderBy(n => n.Walor).ToList();
-                else
-                    stocks = stocks.OrderByDescending(n => n.Walor).ToList();
-            }
-            else
-            {
-                if (sortOrder == SortOrder.Ascending)
-                    stocks = stocks.OrderBy(d => d.Zmiana).ToList();
-                else
-                    stocks = stocks.OrderByDescending(d => d.Zmiana).ToList();
-            }
-            return (List<Category>)stocks;
+            return stocks;
         }
+
+        //public IEnumerable<CategoryVM> StocksDtos()
+        //{
+        //    var stocks = GetAllStocks();
+        //    var stocksDtos = stocks.Select(s => new CategoryVM()
+        //    {
+        //        Id = s.Id,
+        //        Walor = s.Walor,
+        //        KursFloat = s.KursFloat,
+        //        Zmiana = s.Zmiana
+        //    });
+        //    return stocksDtos;
+        //}
     }
 }
