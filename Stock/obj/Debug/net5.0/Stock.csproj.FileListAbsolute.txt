@@ -23,8 +23,6 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNe
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cors.dll
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -109,8 +107,6 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Exten
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Http.dll
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Core.dll
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
@@ -438,3 +434,9 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Stock.csproj.Assembl
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Shared\Components\SearchBar\Default.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Shared\_Pager.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Shared\_Search.cshtml.g.cs
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
