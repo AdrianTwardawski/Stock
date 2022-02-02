@@ -22,7 +22,7 @@
                 <div class="form-group row">
                     <label class="col-md-2" asp-for="Password"></label>
                     <div class="col-md-10">
-                        <input asp-for="Password" class="form-control" placeholder="Enter Password."/>
+                        <input asp-for="Password" class="form-control" placeholder="Enter Password." />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                 </div>
@@ -32,11 +32,11 @@
                         <label asp-for="RememberMe" class="pr-4 pl-0">
                             <input asp-for="RememberMe" />
                         </label>
-                    Remember me?   
+                        Remember me?
                     </div>
                 </div>
 
-                <div class="form-group">                           
+                <div class="form-group">
                     <div class="col-md-10 offset-2">
                         <input type="submit" value="Login" class="btn btn-success" />
                     </div>
@@ -50,3 +50,8 @@
     </div>
 
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}

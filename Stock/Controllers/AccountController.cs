@@ -11,6 +11,7 @@ namespace Stock.Controllers
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
+
         public AccountController(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -22,16 +23,10 @@ namespace Stock.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Login(LoginVM model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        foreach (var item in _dbContext.Users)
-        //        {
-
-        //        }
-        //    }
-        //} 
+     
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
