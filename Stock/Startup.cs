@@ -31,7 +31,7 @@ namespace Stock
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddIdentity<ApplicationUser, IdentityRole>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ISeeder, Seeder>();
             services.AddScoped<IStockScraper, StockScraper>();
             services.AddScoped<ICategoryService, CategoryService>();
