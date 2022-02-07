@@ -58,6 +58,7 @@ namespace Stock
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
             seeder.Seed();
             app.UseEndpoints(endpoints =>
             {
