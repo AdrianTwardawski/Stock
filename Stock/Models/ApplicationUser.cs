@@ -9,5 +9,6 @@ namespace Stock.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+        public List<Observed> Items { get; set; }
     }
 }

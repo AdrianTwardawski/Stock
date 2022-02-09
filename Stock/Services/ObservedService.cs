@@ -35,7 +35,7 @@ namespace Stock.Services
                 var KursRound = MathF.Round(KursConv, 2);
                 obj.Zysk = (KursRound - obj.CenaZakupu) * obj.LiczbaAkcji;
                 _dbContext.Observed.Update(obj);
-            }
+            }    
             _dbContext.SaveChanges();
             return objList;
         }

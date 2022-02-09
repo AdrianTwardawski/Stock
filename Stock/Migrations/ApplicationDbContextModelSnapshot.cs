@@ -249,6 +249,9 @@ namespace Stock.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -265,6 +268,8 @@ namespace Stock.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -324,13 +329,24 @@ namespace Stock.Migrations
 
             modelBuilder.Entity("Stock.Models.Observed", b =>
                 {
+                    b.HasOne("Stock.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Items")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("Stock.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("ApplicationUser");
+
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Stock.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

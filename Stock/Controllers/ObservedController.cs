@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Stock.Data;
 using Stock.Models;
 using Stock.Models.ViewModels;
@@ -7,6 +9,7 @@ using Stock.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Stock.Controllers
@@ -15,17 +18,29 @@ namespace Stock.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IObservedService _service;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public ObservedController(ApplicationDbContext db, IObservedService service)
+        public ObservedController(ApplicationDbContext db, IObservedService service, SignInManager<ApplicationUser> signInManager)
         {
             _db = db;
             _service = service;
+            _signInManager = signInManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var userStocks = _service.GetUserStocks();
-            return View(userStocks);
+
+            //if(User LogedIn)
+            
+            if (User.Identity.IsAuthenticated)
+            {
+                var userStocks = _service.GetUserStocks();
+                userStocks = await _db.Observed
+                                  .Where(a => a.ApplicationUser.Id == HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                                  .ToListAsync();
+                return View(userStocks);
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         //GET - Create
@@ -43,7 +58,20 @@ namespace Stock.Controllers
         {
             if (ModelState.IsValid)
             {
-               _service.Create(model);
+                //_service.Create(model);
+                var dbStock = _db.Category.FirstOrDefault(s => s.Id == model.CategoryId);
+                var observed = new Observed
+                {
+                    CategoryId = model.CategoryId,
+                    LiczbaAkcji = model.LiczbaAkcji,
+                    CenaZakupu = model.CenaZakupu,
+                    Walor = dbStock.Walor,
+                    Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.KursFloat),
+                    ApplicationUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value
+                };
+
+                _db.Observed.Add(observed);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View();

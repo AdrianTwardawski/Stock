@@ -16,7 +16,8 @@ namespace Stock.Models
         public int LiczbaAkcji { get; set; }
         public float Zysk { get; set; }
         public int CategoryId { get; set; }
+        public string ApplicationUserId { get; set; }
         public virtual Category Category { get; set; }
-
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
