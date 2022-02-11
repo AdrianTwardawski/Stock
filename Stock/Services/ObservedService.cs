@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Stock.Data;
 using Stock.Models;
 using Stock.Models.ViewModels;
@@ -27,16 +28,14 @@ namespace Stock.Services
         }
         public IEnumerable<Observed> GetUserStocks()
         {
-            var objList = _dbContext.Observed;
+            var objList = _dbContext.Observed.ToList();
             foreach (var obj in objList)
             {
                 obj.Category = _dbContext.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
                 var KursConv = float.Parse(obj.Category.Kurs.Replace(",", "."));
                 var KursRound = MathF.Round(KursConv, 2);
                 obj.Zysk = (KursRound - obj.CenaZakupu) * obj.LiczbaAkcji;
-                _dbContext.Observed.Update(obj);
-            }    
-            _dbContext.SaveChanges();
+            }       
             return objList;
         }
 

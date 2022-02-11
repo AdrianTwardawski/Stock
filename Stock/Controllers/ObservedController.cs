@@ -27,17 +27,17 @@ namespace Stock.Controllers
             _signInManager = signInManager;
         }
 
-        public async Task<IActionResult> Index()
+        public  IActionResult Index()
         {
 
-            //if(User LogedIn)
-            
+            //if(User LogedIn)           
             if (User.Identity.IsAuthenticated)
             {
                 var userStocks = _service.GetUserStocks();
-                userStocks = await _db.Observed
+                userStocks =  _db.Observed
                                   .Where(a => a.ApplicationUser.Id == HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)
-                                  .ToListAsync();
+                                 .ToList();
+                 
                 return View(userStocks);
             }
             return RedirectToAction("Login", "Account");
@@ -54,8 +54,9 @@ namespace Stock.Controllers
 
         //POST - Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(ObservedVM model)
-        {
+        {         
             if (ModelState.IsValid)
             {
                 //_service.Create(model);
@@ -71,7 +72,7 @@ namespace Stock.Controllers
                 };
 
                 _db.Observed.Add(observed);
-                _db.SaveChanges();
+                _db.SaveChanges();               
                 return RedirectToAction("Index");
             }
             return View();

@@ -1,4 +1,5 @@
-﻿using Stock.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Stock.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +24,24 @@ namespace Stock
 
         public void Seed()
         {
-            if (_dbContext.Category.Any()) return;
+            if (_dbContext.Database.CanConnect())
             {
-                var stocks = _stockScraper.GetStocks();
-
-                foreach (var stock in stocks)
+                var pendingMigrations = _dbContext.Database.GetPendingMigrations();
+                if(pendingMigrations != null && pendingMigrations.Any())
                 {
-                    _dbContext.Category.Add(stock);
+                    _dbContext.Database.Migrate();
                 }
-                _dbContext.SaveChanges();
+                 
+                if (_dbContext.Category.Any()) return;
+                {
+                    var stocks = _stockScraper.GetStocks();
+
+                    foreach (var stock in stocks)
+                    {
+                        _dbContext.Category.Add(stock);
+                    }
+                    _dbContext.SaveChanges();
+                }
             }
         }
     }
