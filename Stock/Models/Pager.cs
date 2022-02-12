@@ -19,13 +19,13 @@ namespace Stock.Models
 
         }
 
-        public Pager(int totalItems, int page, int pageSize = 10)
+        public Pager(int totalItems, int page, int pageSize = 20)
         {
             int totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
             int currentPage = page;
 
-            int startPage = currentPage - 5;
-            int endPage = currentPage + 4;
+            int startPage = currentPage - 2;
+            int endPage = currentPage + 1;
 
             if (startPage <= 0)
             {
@@ -38,7 +38,7 @@ namespace Stock.Models
                 endPage = totalPages;
                 if (endPage > 10)
                 {
-                    startPage = endPage - 9;
+                    startPage = endPage - 4;
                 }
             }
 

@@ -27,22 +27,27 @@ namespace Stock.Controllers
         {    
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
+            ViewData["SortIconWalor"] = "";
+            ViewData["SortIconZmiana"] = "";
             var stocks = _categoryService.GetAllStocks();
 
             switch (sortOrder)
             {
                 case "name_desc":
                     stocks = stocks.OrderByDescending(s => s.Walor).ToList();
+                    ViewData["SortIconWalor"] = "fa fa-arrow-up";
                     break;
                 case "Date":
                     stocks = stocks.OrderBy(s => s.Zmiana).ToList();
+                    ViewData["SortIconZmiana"] = "fa fa-arrow-down";
                     break;
                 case "date_desc":
                     stocks = stocks.OrderByDescending(s => s.Zmiana).ToList();
+                    ViewData["SortIconZmiana"] = "fa fa-arrow-up";
                     break;
                 default:
                     stocks = stocks.OrderBy(s => s.Walor).ToList();
+                    ViewData["SortIconWalor"] = "fa fa-arrow-down";               
                     break;
             }
            
@@ -55,7 +60,7 @@ namespace Stock.Controllers
                .ToList();
             }
 
-            const int pageSize = 10;
+            const int pageSize = 20;
             if (pg < 1)
                 pg = 1;
 

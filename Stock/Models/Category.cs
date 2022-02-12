@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stock.Models
 {
@@ -9,6 +10,7 @@ namespace Stock.Models
         public int Id { get; set; }
         public string Walor { get; set; }
         public string Kurs { get; set; }
+        [DisplayName("Kurs [PLN]")]
         public float KursFloat { get; set; }
         public float Zmiana { get; set; }
 

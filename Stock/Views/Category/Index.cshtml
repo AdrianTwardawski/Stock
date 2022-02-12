@@ -38,13 +38,17 @@
                 <thead>
                     <tr>
                         <th>
+                            <i class="@ViewData["SortIconWalor"]" arial-hidden="true"></i>
                             @Html.ActionLink("Walor", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.KursFloat)
+                            <div class="text-primary">
+                                @Html.DisplayNameFor(model => model.KursFloat)
+                            </div>
                         </th>
                         <th>
-                            @Html.ActionLink("Zmiana", "Index", new { sortOrder = ViewBag.DateSortParm })
+                            <i class="@ViewData["SortIconZmiana"]" arial-hidden="true"></i>
+                            @Html.ActionLink("Zmiana [%]", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>                   
                     </tr>
                 </thead>
