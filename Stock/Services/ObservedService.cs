@@ -68,8 +68,7 @@ namespace Stock.Services
         
         public void Update(ObservedVM model)
         {
-            var dbStock = _dbContext.Observed.FirstOrDefault(s => s.CategoryId == model.CategoryId);
-            model.Walor = dbStock.Walor;
+            var dbStock = _dbContext.Observed.FirstOrDefault(s => s.CategoryId == model.CategoryId);           
             dbStock.LiczbaAkcji = model.LiczbaAkcji;
             dbStock.CenaZakupu = model.CenaZakupu;
            
