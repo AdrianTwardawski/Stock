@@ -57,6 +57,18 @@ namespace Stock.Controllers
                 await _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
                 await _roleManager.CreateAsync(new IdentityRole(Helper.NormalUser));
                 await _roleManager.CreateAsync(new IdentityRole(Helper.PremiumUser));
+
+                _userManager.CreateAsync(new ApplicationUser
+                {
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com",
+                    EmailConfirmed = true,
+                    Name = "Admin"
+
+                }, "Admin123.").GetAwaiter().GetResult();
+
+                ApplicationUser user = _dbContext.Users.FirstOrDefault(u => u.Email == "admin@gmail.com");
+                _userManager.AddToRoleAsync(user, Helper.Admin).GetAwaiter().GetResult();
             }
             return View();
         }

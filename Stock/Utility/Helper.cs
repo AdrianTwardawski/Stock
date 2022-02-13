@@ -13,13 +13,12 @@ namespace Stock.Utility
         public static string PremiumUser = "Premium User";
    
         public static List<SelectListItem> GetRoles()
-        {
-            return new List<SelectListItem>
-            {
-                    new SelectListItem { Value = Helper.Admin, Text = Helper.Admin },
-                    new SelectListItem { Value = Helper.NormalUser, Text = Helper.NormalUser },
-                    new SelectListItem { Value = Helper.PremiumUser, Text = Helper.PremiumUser }
-            };
+        {          
+                return new List<SelectListItem>
+                {                       
+                        new SelectListItem { Value = Helper.NormalUser, Text = Helper.NormalUser },
+                        new SelectListItem { Value = Helper.PremiumUser, Text = Helper.PremiumUser }
+                };           
         }
 
     }
