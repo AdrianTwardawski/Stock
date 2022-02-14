@@ -23,6 +23,9 @@
                         Kurs
                     </th>
                     <th>
+                        Zmiana
+                    </th>
+                    <th>
                         Cena Zakupu
                     </th>
                     <th>
@@ -43,9 +46,24 @@
                     <tr>
                         <td width="15%">@item.Category.Walor</td>
                         <td width="10%">@item.Category.KursFloat</td>
+                        @if (item.Category.Zmiana > 0)
+                            {
+                                <td class="text-primary" width="10%">@item.Category.Zmiana</td>
+                            }
+                            else
+                            {
+                                <td class="text-danger" width="10%">@item.Category.Zmiana</td>
+                            }
                         <td width="10%">@item.CenaZakupu</td>
                         <td width="10%">@item.LiczbaAkcji</td>
-                        <td width="10%">@item.Zysk</td>
+                        @if (item.Zysk > 0)
+                            {
+                                <td class="text-primary" width="10%">@item.Zysk</td>
+                            }
+                            else
+                            {
+                                <td class="text-danger" width="10%">@item.Zysk</td>
+                            }
                         <td width="20%">
                             <div class="w-100 btn-group" role="group">
                                 <a class="btn btn-primary mx-1" asp-controller="Observed" asp-action="Update" asp-route-Id="@item.Id">Update</a>

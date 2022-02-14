@@ -59,7 +59,15 @@
                         <tr>
                             <td width="50%">@obj.Walor</td>
                             <td width="25%">@obj.KursFloat</td>
-                            <td width="25%">@obj.Zmiana</td>                          
+                            @if (obj.Zmiana > 0)
+                            {
+                                <td class="text-primary" width="10%">@obj.Zmiana</td>
+                            }
+                            else
+                            {
+                                <td class="text-danger" width="10%">@obj.Zmiana</td>
+                            }
+                                      
                         </tr>
                     }
                 </tbody>

@@ -12,6 +12,7 @@ namespace Stock.Models
         public string Kurs { get; set; }
         [DisplayName("Kurs [PLN]")]
         public float KursFloat { get; set; }
+        [DisplayName("Zmiana [%]")]
         public float Zmiana { get; set; }
 
 

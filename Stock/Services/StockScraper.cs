@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Stock.Data;
 using Stock.Models;
+using Stock.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
