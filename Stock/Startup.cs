@@ -33,7 +33,7 @@ namespace Stock
                 Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ISeeder, Seeder>();
-            services.AddScoped<IStockScraper, StockScraper>();
+            //services.AddScoped<IStockScraper, StockScraper>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IObservedService, ObservedService>();
             services.AddControllersWithViews();

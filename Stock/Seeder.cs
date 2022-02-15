@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stock.Data;
+using Stock.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,11 @@ namespace Stock
     public class Seeder : ISeeder
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly IStockScraper _stockScraper;
-        public Seeder(ApplicationDbContext dbContext, IStockScraper stockScraper)
+        private readonly ICategoryService _categoryService;
+        public Seeder(ApplicationDbContext dbContext, ICategoryService categoryService)
         {
             _dbContext = dbContext;
-            _stockScraper = stockScraper;
+            _categoryService = categoryService;
         }
 
         public void Seed()
@@ -34,7 +35,7 @@ namespace Stock
                  
                 if (_dbContext.Category.Any()) return;
                 {
-                    var stocks = _stockScraper.GetStocks();
+                    var stocks = _categoryService.AddStocks();
 
                     foreach (var stock in stocks)
                     {

@@ -12,14 +12,11 @@ namespace Stock.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        private readonly IStockScraper _stockScraper;
         private readonly ICategoryService _categoryService;
 
-        public CategoryController(ApplicationDbContext db, IStockScraper stockScraper, ICategoryService categoryService)
+        public CategoryController(ApplicationDbContext db, ICategoryService categoryService)
         {
-            _db = db;
-            _stockScraper = stockScraper;
+          
             _categoryService = categoryService;
         }
 
@@ -55,9 +52,8 @@ namespace Stock.Controllers
             if (!String.IsNullOrEmpty(SearchText))
             {
                 string SearchTextUpper = SearchText.ToUpper();
-                stocks = _categoryService.GetAllStocks()
-               .Where(p => p.Walor.Contains(SearchTextUpper))
-               .ToList();
+                var searchStocks = stocks.Where(p => p.Walor.Contains(SearchTextUpper)).ToList();
+                return View(searchStocks);
             }
 
             const int pageSize = 20;
