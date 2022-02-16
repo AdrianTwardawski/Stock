@@ -25,7 +25,6 @@ namespace Stock.Services
             _db = db;
         }
 
-
         public IEnumerable<Category> AddStocks()
         {
             var web = new HtmlWeb();
@@ -40,6 +39,7 @@ namespace Stock.Services
                 var walor = tds[0].QuerySelector("a").InnerText;
                 var kurs = tds[1].InnerText;
                 var zmiana = tds[2].InnerText;
+                var czas = tds[9].InnerText;
                 float kursFloat = float.Parse(kurs.Replace(",", ".").Replace("&nbsp;", ""));
                 float zmianaFloat = MathF.Round((kursFloat * 100) / (kursFloat - (float.Parse(zmiana.Replace(",", ".").Replace("&nbsp;", "")))) - 100, 2);
               
@@ -52,7 +52,8 @@ namespace Stock.Services
                         Walor = walor,
                         Kurs = kurs,
                         KursFloat = kursFloat,
-                        Zmiana = zmianaFloat
+                        Zmiana = zmianaFloat,
+                        Czas = czas
                     };
                     stocks.Add(stock);
                 }
@@ -61,6 +62,7 @@ namespace Stock.Services
                     itemInDb.Kurs = kurs;
                     itemInDb.Zmiana = zmianaFloat;
                     itemInDb.KursFloat = kursFloat;
+                    itemInDb.Czas = czas;
                     _db.Category.Update(itemInDb);
                 }
             }

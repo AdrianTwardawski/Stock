@@ -14,6 +14,7 @@ namespace Stock.Models
         public float KursFloat { get; set; }
         [DisplayName("Zmiana [%]")]
         public float Zmiana { get; set; }
+        public string Czas { get; set; }
 
 
     }

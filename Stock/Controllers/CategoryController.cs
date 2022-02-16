@@ -14,9 +14,8 @@ namespace Stock.Controllers
     {
         private readonly ICategoryService _categoryService;
 
-        public CategoryController(ApplicationDbContext db, ICategoryService categoryService)
-        {
-          
+        public CategoryController(ICategoryService categoryService)
+        {         
             _categoryService = categoryService;
         }
 
