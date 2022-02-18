@@ -67,7 +67,7 @@ namespace Stock.Controllers
                     LiczbaAkcji = model.LiczbaAkcji,
                     CenaZakupu = model.CenaZakupu,
                     Walor = dbStock.Walor,
-                    Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.KursFloat),
+                    Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.Kurs),
                     ApplicationUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value
                 };
 

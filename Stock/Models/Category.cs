@@ -9,10 +9,8 @@ namespace Stock.Models
         [Key]
         public int Id { get; set; }
         public string Walor { get; set; }
-        public string Kurs { get; set; }
+        public float Kurs { get; set; }
         [DisplayName("Kurs [PLN]")]
-        public float KursFloat { get; set; }
-        [DisplayName("Zmiana [%]")]
         public float Zmiana { get; set; }
         public string Czas { get; set; }
 

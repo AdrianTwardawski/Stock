@@ -25,7 +25,7 @@ namespace Stock.Controllers
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["SortIconWalor"] = "";
             ViewData["SortIconZmiana"] = "";
-            var stocks = _categoryService.AddStocks();
+            var stocks = _categoryService.GetStocks();
 
             switch (sortOrder)
             {
@@ -64,7 +64,6 @@ namespace Stock.Controllers
             int recSkip = (pg - 1) * pageSize;
             var data = stocks.Skip(recSkip).Take(pager.PageSize).ToList(); //List<Category> retProducts = stocks.Skip(recSkip).Take(pageSize).ToList()
             this.ViewBag.Pager = pager; //ViewBag.SearchPager = SearchPager;
-
             return View(data); //return View(retProducts);
         }
     }

@@ -32,8 +32,7 @@ namespace Stock.Services
             foreach (var obj in objList)
             {
                 obj.Category = _dbContext.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
-                var KursConv = float.Parse(obj.Category.Kurs.Replace(",", "."));
-                var KursRound = MathF.Round(KursConv, 2);
+                var KursRound = MathF.Round(obj.Category.Kurs, 2);
                 obj.Zysk = (KursRound - obj.CenaZakupu) * obj.LiczbaAkcji;
             }       
             return objList;
@@ -48,7 +47,7 @@ namespace Stock.Services
                 LiczbaAkcji = model.LiczbaAkcji,
                 CenaZakupu = model.CenaZakupu,
                 Walor = dbStock.Walor,
-                Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.KursFloat)
+                Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.Kurs)
             };
 
             _dbContext.Observed.Add(observed);
