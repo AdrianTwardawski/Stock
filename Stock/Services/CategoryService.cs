@@ -11,7 +11,6 @@ namespace Stock.Services
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAllStocks();
         IEnumerable<Category> AddStocks();
     }
 
@@ -63,19 +62,13 @@ namespace Stock.Services
                     itemInDb.Zmiana = zmianaFloat;
                     itemInDb.KursFloat = kursFloat;
                     itemInDb.Czas = czas;
-                    _db.Category.Update(itemInDb);
+                    _db.Category.Update(itemInDb);                   
                 }
             }
             _db.SaveChanges();
+            var stockList = _db.Category.ToList();
 
-            return stocks;
+            return stockList;
         }
-       
-        public IEnumerable<Category> GetAllStocks()
-        {
-            var stocks = _db.Category.ToList();
-            return stocks;
-        }
-        
     }
 }

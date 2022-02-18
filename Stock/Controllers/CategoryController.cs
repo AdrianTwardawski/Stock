@@ -25,7 +25,7 @@ namespace Stock.Controllers
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["SortIconWalor"] = "";
             ViewData["SortIconZmiana"] = "";
-            var stocks = _categoryService.GetAllStocks();
+            var stocks = _categoryService.AddStocks();
 
             switch (sortOrder)
             {
