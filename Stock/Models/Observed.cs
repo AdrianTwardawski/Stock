@@ -11,13 +11,14 @@ namespace Stock.Models
     public class Observed
     {
         public int Id { get; set; }
-        public string Walor { get; set; }
-        public float CenaZakupu { get; set; }
-        public int LiczbaAkcji { get; set; }
-        public float Zysk { get; set; }
-        public int CategoryId { get; set; }
+        public string Stock { get; set; }
+        public float PurchasePrice { get; set; }
+        [DisplayName("Number of actions")]
+        public int NumberOfActions { get; set; }
+        public float Profit { get; set; }
+        public int MarketId { get; set; }
         public string ApplicationUserId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Market Market { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

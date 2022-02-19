@@ -31,23 +31,23 @@ namespace Stock.Services
             var objList = _dbContext.Observed.ToList();
             foreach (var obj in objList)
             {
-                obj.Category = _dbContext.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
-                var KursRound = MathF.Round(obj.Category.Kurs, 2);
-                obj.Zysk = (KursRound - obj.CenaZakupu) * obj.LiczbaAkcji;
+                obj.Market = _dbContext.Market.FirstOrDefault(u => u.Id == obj.MarketId);
+                var KursRound = MathF.Round(obj.Market.Price, 2);
+                obj.Profit = (KursRound - obj.PurchasePrice) * obj.NumberOfActions;
             }       
             return objList;
         }
 
         public void Create(ObservedVM model)
         {
-            var dbStock = _dbContext.Category.FirstOrDefault(s => s.Id == model.CategoryId);
+            var dbStock = _dbContext.Market.FirstOrDefault(s => s.Id == model.MarketId);
             var observed = new Observed
             {
-                CategoryId = model.CategoryId,
-                LiczbaAkcji = model.LiczbaAkcji,
-                CenaZakupu = model.CenaZakupu,
-                Walor = dbStock.Walor,
-                Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.Kurs)
+                MarketId = model.MarketId,
+                NumberOfActions = model.NumberOfActions,
+                PurchasePrice = model.PurchasePrice,
+                Stock = dbStock.Stock,
+                Profit = model.NumberOfActions * (model.PurchasePrice - dbStock.Price)
             };
 
             _dbContext.Observed.Add(observed);
@@ -56,9 +56,9 @@ namespace Stock.Services
 
         public IEnumerable<SelectListItem> GetTypeDropDown()
         {
-            var TypeDropDown = _dbContext.Category.Select(i => new SelectListItem
+            var TypeDropDown = _dbContext.Market.Select(i => new SelectListItem
             {
-                Text = i.Walor,
+                Text = i.Stock,
                 Value = i.Id.ToString()
             });
             return TypeDropDown;
@@ -67,9 +67,9 @@ namespace Stock.Services
         
         public void Update(ObservedVM model)
         {
-            var dbStock = _dbContext.Observed.FirstOrDefault(s => s.CategoryId == model.CategoryId);           
-            dbStock.LiczbaAkcji = model.LiczbaAkcji;
-            dbStock.CenaZakupu = model.CenaZakupu;
+            var dbStock = _dbContext.Observed.FirstOrDefault(s => s.MarketId == model.MarketId);           
+            dbStock.NumberOfActions = model.NumberOfActions;
+            dbStock.PurchasePrice = model.PurchasePrice;
            
             _dbContext.SaveChanges();
         }

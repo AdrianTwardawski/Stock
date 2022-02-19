@@ -12,19 +12,19 @@ namespace Stock.Models.ViewModels
     public class ObservedVM
     {
         
-        public string Walor { get; set; }
-        [DisplayName("Cena zakupu")]
+        public string Stock { get; set; }
+        [DisplayName("Purchase price")]
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
-        public float CenaZakupu { get; set; }
-        [DisplayName("Liczba akcji")]
+        public float PurchasePrice { get; set; }
+        [DisplayName("Number of actions")]
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
-        public int LiczbaAkcji { get; set; }
-        [DisplayName("Category")]
-        public int CategoryId { get; set; }
-        [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
+        public int NumberOfActions { get; set; }
+        [DisplayName("Market")]
+        public int MarketId { get; set; }
+        [ForeignKey("MarketId")]
+        public virtual Market Market { get; set; }
         public IEnumerable<SelectListItem> TypeDropDown { get; set; }
 
     }

@@ -15,7 +15,7 @@ namespace Stock.Data
                 
         }
 
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Market> Market { get; set; }
         public DbSet<Observed> Observed { get; set; }
     }
 }

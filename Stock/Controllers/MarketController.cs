@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Stock.Controllers
 {
-    public class CategoryController : Controller
+    public class MarketController : Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly IMarketService _marketService;
 
-        public CategoryController(ICategoryService categoryService)
-        {         
-            _categoryService = categoryService;
+        public MarketController(IMarketService marketService)
+        {
+            _marketService = marketService;
         }
 
         public IActionResult Index(int pg = 1, string SearchText = "", string sortOrder = "")
@@ -25,24 +25,24 @@ namespace Stock.Controllers
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["SortIconWalor"] = "";
             ViewData["SortIconZmiana"] = "";
-            var stocks = _categoryService.GetStocks();
+            var stocks = _marketService.GetStocks();
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    stocks = stocks.OrderByDescending(s => s.Walor).ToList();
+                    stocks = stocks.OrderByDescending(s => s.Stock).ToList();
                     ViewData["SortIconWalor"] = "fa fa-arrow-up";
                     break;
                 case "Date":
-                    stocks = stocks.OrderBy(s => s.Zmiana).ToList();
+                    stocks = stocks.OrderBy(s => s.Change).ToList();
                     ViewData["SortIconZmiana"] = "fa fa-arrow-down";
                     break;
                 case "date_desc":
-                    stocks = stocks.OrderByDescending(s => s.Zmiana).ToList();
+                    stocks = stocks.OrderByDescending(s => s.Change).ToList();
                     ViewData["SortIconZmiana"] = "fa fa-arrow-up";
                     break;
                 default:
-                    stocks = stocks.OrderBy(s => s.Walor).ToList();
+                    stocks = stocks.OrderBy(s => s.Stock).ToList();
                     ViewData["SortIconWalor"] = "fa fa-arrow-down";               
                     break;
             }
@@ -51,7 +51,7 @@ namespace Stock.Controllers
             if (!String.IsNullOrEmpty(SearchText))
             {
                 string SearchTextUpper = SearchText.ToUpper();
-                var searchStocks = stocks.Where(p => p.Walor.Contains(SearchTextUpper)).ToList();
+                var searchStocks = stocks.Where(p => p.Stock.Contains(SearchTextUpper)).ToList();
                 return View(searchStocks);
             }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Stock.Models.Category>
+﻿@model IEnumerable<Stock.Models.Market>
 
 @{
     ViewData["Title"] = "Index";
@@ -17,7 +17,7 @@
 
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Lista spółek</h2>
+            <h2 class="text-primary">List of stocks</h2>
         </div>
     </div>
 
@@ -39,20 +39,20 @@
                     <tr>
                         <th>
                             <i class="@ViewData["SortIconWalor"]" arial-hidden="true"></i>
-                            @Html.ActionLink("Walor", "Index", new { sortOrder = ViewBag.NameSortParm })
+                            @Html.ActionLink("Stock", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
                             <div class="text-primary">
-                                @Html.DisplayNameFor(model => model.Kurs)
+                                @Html.DisplayNameFor(model => model.Price)
                             </div>
                         </th>
                         <th>
                             <i class="@ViewData["SortIconZmiana"]" arial-hidden="true"></i>
-                            @Html.ActionLink("Zmiana [%]", "Index", new { sortOrder = ViewBag.DateSortParm })
+                            @Html.ActionLink("Change [%]", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>
                         <th>
                             <div class="text-primary">
-                                @Html.DisplayNameFor(model => model.Czas)
+                                @Html.DisplayNameFor(model => model.Time)
                             </div>
                         </th>
                     </tr>
@@ -62,17 +62,17 @@
                     @foreach (var obj in Model)
                     {
                         <tr>
-                            <td width="40%">@obj.Walor</td>
-                            <td width="20%">@obj.Kurs</td>
-                            @if (obj.Zmiana > 0)
+                            <td width="40%">@obj.Stock</td>
+                            <td width="20%">@obj.Price</td>
+                            @if (obj.Change > 0)
                             {
-                                <td class="text-primary" width="20%">@obj.Zmiana</td>
+                                <td class="text-primary" width="20%">@obj.Change</td>
                             }
                             else
                             {
-                                <td class="text-danger" width="20%">@obj.Zmiana</td>
+                                <td class="text-danger" width="20%">@obj.Change</td>
                             }
-                            <td width="20%">@obj.Czas</td>     
+                            <td width="20%">@obj.Time</td>     
                         </tr>
                     }
                 </tbody>

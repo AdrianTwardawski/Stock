@@ -418,7 +418,6 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Stock.TagHelpers.o
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Stock.RazorCoreGenerate.cache
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Observed\Create.cshtml.g.cs
@@ -442,3 +441,4 @@ C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Stock.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\ref\Stock.dll
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Stock.pdb
 C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Stock.genruntimeconfig.cache
+C:\Users\Adrian\Desktop\dev\c#\Stock\Stock\obj\Release\net5.0\Razor\Views\Market\Index.cshtml.g.cs

@@ -60,14 +60,14 @@ namespace Stock.Controllers
             if (ModelState.IsValid)
             {
                 //_service.Create(model);
-                var dbStock = _db.Category.FirstOrDefault(s => s.Id == model.CategoryId);
+                var dbStock = _db.Market.FirstOrDefault(s => s.Id == model.MarketId);
                 var observed = new Observed
                 {
-                    CategoryId = model.CategoryId,
-                    LiczbaAkcji = model.LiczbaAkcji,
-                    CenaZakupu = model.CenaZakupu,
-                    Walor = dbStock.Walor,
-                    Zysk = model.LiczbaAkcji * (model.CenaZakupu - dbStock.Kurs),
+                    MarketId = model.MarketId,
+                    NumberOfActions = model.NumberOfActions,
+                    PurchasePrice = model.PurchasePrice,
+                    Stock = dbStock.Stock,
+                    Profit = model.NumberOfActions * (model.PurchasePrice - dbStock.Price),
                     ApplicationUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value
                 };
 

@@ -9,10 +9,6 @@ using Microsoft.Extensions.Hosting;
 using Stock.Data;
 using Stock.Models;
 using Stock.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Stock
 {
@@ -34,7 +30,7 @@ namespace Stock
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ISeeder, Seeder>();
             //services.AddScoped<IStockScraper, StockScraper>();
-            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IMarketService, MarketService>();
             services.AddScoped<IObservedService, ObservedService>();
             services.AddControllersWithViews();
         }

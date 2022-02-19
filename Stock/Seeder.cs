@@ -1,10 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stock.Data;
 using Stock.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Stock
 {
@@ -16,11 +13,11 @@ namespace Stock
     public class Seeder : ISeeder
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly ICategoryService _categoryService;
-        public Seeder(ApplicationDbContext dbContext, ICategoryService categoryService)
+        private readonly IMarketService _marketService;
+        public Seeder(ApplicationDbContext dbContext, IMarketService marketService)
         {
             _dbContext = dbContext;
-            _categoryService = categoryService;
+            _marketService = marketService;
         }
 
         public void Seed()
@@ -33,13 +30,13 @@ namespace Stock
                     _dbContext.Database.Migrate();
                 }
                  
-                if (_dbContext.Category.Any()) return;
+                if (_dbContext.Market.Any()) return;
                 {
-                    var stocks = _categoryService.AddStocks();
+                    var stocks = _marketService.AddStocks();
 
                     foreach (var stock in stocks)
                     {
-                        _dbContext.Category.Add(stock);
+                        _dbContext.Market.Add(stock);
                     }
                     _dbContext.SaveChanges();
                 }

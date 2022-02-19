@@ -218,28 +218,28 @@ namespace Stock.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Stock.Models.Category", b =>
+            modelBuilder.Entity("Stock.Models.Market", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Czas")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Kurs")
+                    b.Property<float>("Change")
                         .HasColumnType("real");
 
-                    b.Property<string>("Walor")
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Stock")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Zmiana")
-                        .HasColumnType("real");
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Market");
                 });
 
             modelBuilder.Entity("Stock.Models.Observed", b =>
@@ -252,26 +252,26 @@ namespace Stock.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("MarketId")
                         .HasColumnType("int");
 
-                    b.Property<float>("CenaZakupu")
+                    b.Property<int>("NumberOfActions")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Profit")
                         .HasColumnType("real");
 
-                    b.Property<int>("LiczbaAkcji")
-                        .HasColumnType("int");
+                    b.Property<float>("PurchasePrice")
+                        .HasColumnType("real");
 
-                    b.Property<string>("Walor")
+                    b.Property<string>("Stock")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Zysk")
-                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("MarketId");
 
                     b.ToTable("Observed");
                 });
@@ -333,15 +333,15 @@ namespace Stock.Migrations
                         .WithMany("Items")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Stock.Models.Category", "Category")
+                    b.HasOne("Stock.Models.Market", "Market")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("MarketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
 
-                    b.Navigation("Category");
+                    b.Navigation("Market");
                 });
 
             modelBuilder.Entity("Stock.Models.ApplicationUser", b =>

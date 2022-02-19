@@ -3,36 +3,36 @@
 <form method="post" asp-action="Create">
     <div class="border p-3">
         <div class="form-group row">
-            <h2 class="text-black-50 p-3">Dodaj spółkę</h2>
+            <h2 class="text-black-50 p-3">Add stock</h2>
         </div>
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group row">
             <div class="col-4">
-                <label asp-for="Category"></label>
+                <label asp-for="Market"></label>
             </div>
             <div class="col-4">
-                <label asp-for="LiczbaAkcji"></label>
+                <label asp-for="NumberOfActions"></label>
             </div>
             <div class="col-4">
-                <label asp-for="CenaZakupu"></label>
+                <label asp-for="PurchasePrice"></label>
             </div>
 
         </div>
 
         <div class="form-group row">
             <div class="col-4">
-                <select asp-for="CategoryId" asp-items="@ViewBag.TypeDropDown" class="form-control">
+                <select asp-for="MarketId" asp-items="@ViewBag.TypeDropDown" class="form-control">
                     <option selected>--Wybierz Spółkę--</option>
                 </select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                <span asp-validation-for="MarketId" class="text-danger"></span>
             </div>
             <div class="col-4">
-                <input asp-for="LiczbaAkcji" class="form-control" />
-                <span asp-validation-for="LiczbaAkcji" class="text-danger"></span>
+                <input asp-for="NumberOfActions" class="form-control" />
+                <span asp-validation-for="NumberOfActions" class="text-danger"></span>
             </div>
             <div class="col-4">
-                <input asp-for="CenaZakupu" class="form-control" />
-                <span asp-validation-for="CenaZakupu" class="text-danger"></span>
+                <input asp-for="PurchasePrice" class="form-control" />
+                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
             </div>
         </div>
 
