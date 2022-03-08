@@ -52,6 +52,11 @@
                         </th>
                         <th>
                             <div class="text-primary">
+                                @Html.DisplayNameFor(model => model.TradesValue)
+                            </div>
+                        </th>
+                        <th>
+                            <div class="text-primary">
                                 @Html.DisplayNameFor(model => model.Time)
                             </div>
                         </th>
@@ -61,19 +66,19 @@
 
                     @foreach (var obj in Model)
                     {
-                        <tr>
-                            <td width="40%">@obj.Stock</td>
-                            <td width="20%">@obj.Price</td>
-                            @if (obj.Change > 0)
-                            {
-                                <td class="text-primary" width="20%">@obj.Change</td>
-                            }
-                            else
-                            {
-                                <td class="text-danger" width="20%">@obj.Change</td>
-                            }
-                            <td width="20%">@obj.Time</td>     
-                        </tr>
+                    <tr>
+                        <td width="30%">@obj.Stock</td>
+                        <td width="20%">@obj.Price</td>
+                        @if (obj.Change > 0)
+                        {
+                    <td class="text-primary" width="20%">@obj.Change</td> }
+                                        else
+                                        {
+                                            <td class="text-danger" width="20%">@obj.Change</td>
+                                        }
+                        <td width="15%">@obj.TradesValue</td>
+                        <td width="15%">@obj.Time</td>
+                    </tr>
                     }
                 </tbody>
             </table> 

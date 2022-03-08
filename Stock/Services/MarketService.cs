@@ -37,6 +37,7 @@ namespace Stock.Services
                 var stock = tds[0].QuerySelector("a").InnerText;
                 var price = float.Parse(tds[1].InnerText.Replace(",", ".").Replace("&nbsp;", ""));
                 var change = MathF.Round((price * 100) / (price - (float.Parse(tds[2].InnerText.Replace(",", ".").Replace("&nbsp;", "")))) - 100, 2);
+                var tradesValue = tds[5].InnerText.Replace("&nbsp;", " ");
                 var time = tds[9].InnerText;
               
                 var itemInDb = _db.Market.FirstOrDefault(i => i.Stock == stock);
@@ -49,6 +50,7 @@ namespace Stock.Services
                         Stock = stock,
                         Price = price,
                         Change = change,
+                        TradesValue = tradesValue,
                         Time = time
                     };
                     markets.Add(market);
@@ -58,6 +60,7 @@ namespace Stock.Services
                     itemInDb.Stock = stock;
                     itemInDb.Change = change;
                     itemInDb.Price = price;
+                    itemInDb.TradesValue = tradesValue;
                     itemInDb.Time = time;                         
                 }
             }

@@ -12,6 +12,7 @@ namespace Stock.Models
         public float Price { get; set; }
         [DisplayName("Price [PLN]")]
         public float Change { get; set; }
+        public string TradesValue { get; set; }
         public string Time { get; set; }
 
 
